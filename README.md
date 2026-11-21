@@ -11,6 +11,15 @@ character per value. It searches a fixed 45,000 nodes per move — never a
 clock — so every game replays move for move. On the kit's three practice
 trials it rated 1,545 / 1,279 / 1,545 against the house gauntlet.
 
+## Design notes
+
+Determinism is a rule, not a preference: the final replays every game
+and demands the same moves, so the search budget counts nodes, never
+milliseconds, and nothing in the engine reads a clock or a random
+source. The board is kept from the side to move's point of view — after
+each move it is flipped vertically and case-swapped — which keeps the
+move generator and every table written for one colour only.
+
 ## Run it
 
 ```sh
